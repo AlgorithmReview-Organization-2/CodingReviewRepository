@@ -1,3 +1,12 @@
+---
+name: Question issue template
+about: Question and URL
+title: "[본인] x주차 주제"
+labels: Question
+assignees: ''
+
+---
+
 ## 제목 : [출제자] x주차 주제
 
 <br> eg. [최원준] 1주차 Arrays
