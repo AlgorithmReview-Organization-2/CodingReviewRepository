@@ -1,4 +1,4 @@
-# AlgorithmCodes 2 
+# AlgorithmCodes 2
 Repository for submitting and reviewing peer answers for coding questions.
 
 <br>
