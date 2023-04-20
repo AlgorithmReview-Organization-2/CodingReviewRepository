@@ -15,9 +15,9 @@ Repository for submitting and reviewing peer answers for coding questions.
 - 06/20 2D_DP
 - 06/27 Greedy
 --------
- 
 
-<br><br>1. 매주 해당 주차 주제로 문제를 5가지 준비해와서, Issue로 2개 등록한다. (라벨은 풀어야하는 사람)
+<br><br>이용방법:
+<br><br>1. 매주 해당 주차 주제로 문제를 5가지 준비해와서(코딩 사이트는 마음대로), Issue로 2개 등록한다. (라벨은 풀어야하는 사람)
 <br><br>2. Issue를 보면서 문제를 IDE에서 자유롭게 풀고, 레포에 새로운 파일을 만든다.
 <br>이때, 경로는 CodingReviewRepository/Coding_날짜_주제/출제자/x번 
 <br>(eg. CodingReviewRepository/Coding_0425_Array_And_Hashing_And_Stack/최원준/1번)
