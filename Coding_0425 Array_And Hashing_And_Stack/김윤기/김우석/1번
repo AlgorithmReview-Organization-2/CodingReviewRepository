@@ -3,7 +3,7 @@ https://leetcode.com/problems/valid-parentheses/
 1. 아이디어 :
     닫는 모양의 괄호를 찾아 유효한 문자열인지 확인한다.
 2. 시간복잡도 :
-    O(n) : n은 String의 길이
+    O(n^2) : n은 String의 길이* sublist에 걸리는 시간 n
 3. 자료구조 :
     리스트
 
