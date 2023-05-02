@@ -1,0 +1,63 @@
+https://leetcode.com/problems/roman-to-integer/
+
+1. 아이디어 :
+    문자열을 돌면서 각 로마자에 해당하는 숫자를 더해서 답을 구한다.
+2. 시간복잡도 :
+    O(n) : n은 String s의 길이
+3. 자료구조 :
+    배열
+
+class Solution {
+    public int romanToInt(String s) {
+        int answer = 0;
+            int length = s.length();
+            
+            for(int i = 0; i < length; i++){
+                String temp = String.valueOf(s.charAt(i));
+
+                switch (temp){
+                    case "I" : 
+                        if(i != length -1 && String.valueOf(s.charAt(i+1)).equals("V")){
+                            answer += 4;
+                            i++;
+                            break;
+                        }
+                        else if(i != length -1 && String.valueOf(s.charAt(i+1)).equals("X")){
+                            answer += 9;
+                            i++;
+                            break;
+                        }
+                        answer += 1; break;
+                    case "V" : answer += 5; break;
+                    case "X" :
+                        if(i != length -1 && String.valueOf(s.charAt(i+1)).equals("L")){
+                            answer += 40;
+                            i++;
+                            break;
+                        }
+                        else if(i != length -1 && String.valueOf(s.charAt(i+1)).equals("C")){
+                            answer += 90;
+                            i++;
+                            break;
+                        }
+                        answer += 10; break;
+                    case "L" : answer += 50; break;
+                    case "C" :
+                        if(i != length -1 && String.valueOf(s.charAt(i+1)).equals("D")){
+                            answer += 400;
+                            i++;
+                            break;
+                        }
+                        else if(i != length -1 && String.valueOf(s.charAt(i+1)).equals("M")){
+                            answer += 900;
+                            i++;
+                            break;
+                        }
+                        answer += 100; break;
+                    case "D" : answer += 500; break;
+                    case "M" : answer += 1000; break;
+                }
+            }
+            return answer;
+    }
+}
