@@ -3,7 +3,7 @@ https://leetcode.com/problems/merge-sorted-array/
 1. 아이디어 :
     두 배열을 합쳐서 하나의 정렬된 배열 반환
 2. 시간복잡도 :
-    O(n) : n은 nums2의 길이
+    O(nlogn) : array를 sort하는 시간
 3. 자료구조 :
     리스트, 배열
 
