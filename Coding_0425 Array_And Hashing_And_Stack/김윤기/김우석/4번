@@ -1,0 +1,34 @@
+https://leetcode.com/problems/merge-sorted-array/
+
+1. 아이디어 :
+    두 배열을 합쳐서 하나의 정렬된 배열 반환
+2. 시간복잡도 :
+    O(n) : n은 nums2의 길이
+3. 자료구조 :
+    리스트, 배열
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        List<Integer> arr = new ArrayList<>();
+            if(m == 0){
+                for(int i = 0; i < n; i++){
+                    nums1[i] = nums2[i];
+                }
+            }
+            else if(m != 0 && n != 0){
+                for(int i = 0; i < m; i++){
+                    arr.add(nums1[i]);
+                }
+                for(int i = 0; i < n; i++){
+                    arr.add(nums2[i]);
+                }
+                
+                arr.sort(Comparator.naturalOrder());
+                int length = nums1.length;
+                
+                for(int i = 0; i < length; i++){
+                    nums1[i] = arr.get(i);
+                }
+            }
+    }
+}
