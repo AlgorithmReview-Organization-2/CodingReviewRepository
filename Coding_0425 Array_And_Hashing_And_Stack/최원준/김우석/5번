@@ -33,13 +33,10 @@ class Solution {
                     matrix[a][b] = -200;
                     a++;
                     count--;
-                    System.out.println(a);
                 }
                 a--;
                 b--;
                 while(true) {
-                    System.out.println(a);
-                    System.out.println(b);
                     if(b == -1 || (matrix[a][b] == -200)){
                         break;
                     }
