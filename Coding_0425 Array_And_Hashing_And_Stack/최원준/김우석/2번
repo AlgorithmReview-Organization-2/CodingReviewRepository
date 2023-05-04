@@ -3,7 +3,7 @@ https://leetcode.com/problems/third-maximum-number/
 1. 아이디어 :
     먼저 배열을 내림차순으로 정렬하고, 반복문을 돌면서 중복여부를 확인하며 로직을 처리한다.
 2. 시간복잡도 :
-    O(2n) -> O(n) : n은 nums의 길이
+    O(nlogn) : n은 nums의 길이
 3. 자료구조 :
     배열, 해시맵
 
