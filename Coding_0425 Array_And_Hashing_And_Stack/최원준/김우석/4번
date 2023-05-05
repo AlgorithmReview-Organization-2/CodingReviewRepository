@@ -1,0 +1,64 @@
+https://leetcode.com/problems/implement-queue-using-stacks/
+
+1. 아이디어 :
+    스택 두 개를 생성하여 Queue의 로직을 구현
+2. 시간복잡도 :
+    O(n) : n은 fisrstStack의 크기
+3. 자료구조 :
+    스택
+    
+class MyQueue {
+        Stack<Integer> firstStack = new Stack<>();
+        Stack<Integer> secondStack = new Stack<>();
+        public MyQueue() {
+        }
+
+        public void push(int x) {
+            firstStack.push(x);
+        }
+
+        public int pop() {
+            int answer = 0;
+            
+            if(secondStack.isEmpty()) {
+                while (!firstStack.isEmpty()) {
+                    secondStack.push(firstStack.pop());
+                }
+                answer = secondStack.pop();
+            }
+            else{
+                answer = secondStack.pop();
+            }
+
+            return answer;
+        }
+
+        public int peek() {
+            int answer = 0;
+
+            if(secondStack.isEmpty()) {
+                while (!firstStack.isEmpty()) {
+                    secondStack.push(firstStack.pop());
+                }
+                answer = secondStack.peek();
+            }
+            else{
+                answer = secondStack.peek();
+            }
+
+            return answer;
+        }
+
+        public boolean empty() {
+            return secondStack.isEmpty() && firstStack.isEmpty();
+        }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
