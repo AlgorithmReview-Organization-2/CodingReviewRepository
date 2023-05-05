@@ -1,0 +1,46 @@
+https://leetcode.com/problems/intersection-of-two-arrays-ii/
+
+1. 아이디어 :
+    한 배열에 대해 반복문을 돌면서 다른 배열에해당 값이 존재하는지 확인
+2. 시간복잡도 :
+    O(n^2) : n은 nums1, nums2 중 길이가 긴 배열의 길이
+3. 자료구조 :
+    리스트
+    
+
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+            int[] answer;
+            int length1 = nums1.length;
+            int length2 = nums2.length;
+            //로직처리의 편의성을 위해 List로 변환
+            List<Integer> temp = new ArrayList<>();
+            List<Integer> temp1 = Arrays.stream(nums1).boxed().collect(Collectors.toList());
+            List<Integer> temp2 = Arrays.stream(nums2).boxed().collect(Collectors.toList());
+
+            if(length1 < length2){
+                for(int i : temp1){
+                    if(temp2.contains(i)){
+                        temp.add(i);
+                        temp2.remove(Integer.valueOf(i)); //중복을 피하기 위해 제거
+                    }
+                }
+            }
+            else{
+                for(int i : temp2){
+                    if(temp1.contains(i)){
+                        temp.add(i);
+                        temp1.remove(Integer.valueOf(i));
+                    }
+                }
+            }
+
+            int lengthFinal = temp.size();
+            answer = new int[lengthFinal];
+
+            for(int i = 0; i < lengthFinal; i++){
+                answer[i] = temp.get(i);
+            }
+            return answer;
+        }
+}
