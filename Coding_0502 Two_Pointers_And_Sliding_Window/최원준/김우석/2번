@@ -1,0 +1,36 @@
+https://leetcode.com/problems/reverse-prefix-of-word/
+
+1. 아이디어 :
+    word 문자열을 돌면서 ch와 같은 문자의 인덱스를 구한다. 그 인덱스 앞에 문자열을 for문을 거꾸로 돌며 뒤집고, 나머지는 그대로 출력한다.
+2. 시간복잡도 :
+    O(N)
+3. 자료구조 :
+    배열
+
+
+
+class Solution {
+    public String reversePrefix(String word, char ch) {
+        char[] arr = word.toCharArray();
+            StringBuilder sb = new StringBuilder();
+            int index = -1;
+
+            for(int i = 0; i < arr.length; i++){
+                if(arr[i] == ch){
+                    index = i;
+                    break;
+                }
+            }
+
+            if(index == -1) return word;
+            
+            for(int i = index; i >= 0; i--){
+                sb.append(arr[i]);
+            }
+
+            for(int i = index + 1; i < arr.length; i++){
+                sb.append(arr[i]);
+            }
+            return sb.toString();
+    }
+}
