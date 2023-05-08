@@ -1,0 +1,27 @@
+https://leetcode.com/problems/number-of-arithmetic-triplets/
+
+1. 아이디어 :
+    nums 배열을 set에 넣고, 배열을 순서대로 돌면서 주어진 diff를 공차로 갖는, 개수가 3개인 등차수열의 개수를 구한다.
+2. 시간복잡도 :
+    O(N)
+3. 자료구조 :
+    배열, HashSet
+    
+    
+class Solution {
+    public int arithmeticTriplets(int[] nums, int diff) {
+        int answer = 0;
+            HashSet<Integer> set = new HashSet<>();
+            
+            for(int i = 0; i < nums.length; i++){
+                set.add(nums[i]);
+            }
+            
+            for(int i = 0; i < nums.length; i++){
+                if(set.contains(nums[i] + diff) && set.contains(nums[i] + diff * 2)){
+                    answer++;
+                }
+            }
+            return answer;
+    }
+}
