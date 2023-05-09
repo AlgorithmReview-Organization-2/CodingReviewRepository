@@ -1,0 +1,30 @@
+https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/
+
+1. 아이디어 :
+    문자열을 반복문으로 돌면서 각 문자마다 길이가 3인 substring을 확인하고 HaseSet을 통해 중복된 문자가 있는지 확인한다.
+    중복된 문자가 없다면 answer 변수를 1씩 증가시킨다.
+2. 시간복잡도 :
+    O(N), N은 s의 길이
+3. 자료구조 :
+    배열, HashSet
+    
+class Solution {
+    public int countGoodSubstrings(String s) {
+        int answer = 0;
+            int length = s.length();
+            HashSet<String> set = new HashSet<>();
+            
+            for(int i = 0; i < length - 2; i++){
+                for(int j = i; j < i + 3; j++){
+                    if(set.contains(String.valueOf(s.charAt(j)))) break;
+                    else{
+                        set.add(String.valueOf(s.charAt(j)));
+                    }
+                }
+                if(set.size() == 3) answer++;
+                set.clear();
+            }
+
+            return answer;
+    }
+}
