@@ -1,0 +1,44 @@
+https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values/
+
+1. 아이디어 :
+    nums1과 nums2 배열을 돌면서 더해야 할 값들을 temp 배열에 넣는다. temp 배열의 해당 인덱스에 값이 있으면 더해준다.
+    마지막으로 temp 배열의 인덱스값을 2차 배열의 첫번째 열의 값으로, temp 배열 해당 인덱스에 들어있는 값을 2차 배열의 두번째 열의 값으로 저장한다.
+2. 시간복잡도 :
+    O(N), N은 nums1의 행의 길이
+3. 자료구조 :
+    배열
+    
+class Solution {
+    public int[][] mergeArrays(int[][] nums1, int[][] nums2) {
+        int[][] answer;
+            int nums1Row = nums1.length; //nums1의 세로길이
+            int nums2Row = nums2.length;
+            int answerLength = 0;
+            //temp의 인덱스가 id값, value가 해당값
+            //id값 0은 안쓰니까, 크기는 1더 크게 만들어야 한다.
+            int[] temp = new int[1001];
+
+            for(int i = 0; i < nums1Row; i++){
+                temp[nums1[i][0]] += nums1[i][1];
+            }
+
+            for(int i = 0; i < nums2Row; i++){
+                temp[nums2[i][0]] += nums2[i][1];
+            }
+
+            for(int i = 1; i < 1001; i++){
+                if(temp[i] != 0) answerLength++;
+            }
+
+            answer = new int[answerLength][2];
+            int index = 0;
+            for(int i = 1; i < 1001; i++){
+                if(temp[i] != 0){
+                    answer[index] = new int[]{i, temp[i]};
+                    index++;
+                }
+            }
+
+            return answer;
+    }
+}
