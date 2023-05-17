@@ -1,0 +1,55 @@
+https://leetcode.com/problems/swap-nodes-in-pairs/
+
+1. 아이디어 : 투 포인터를 쓰는 것처럼 두개의 노드를 묶어서 생각한다. 두번째 노드 다음에 있는 노드의 개수에 따라 다르게 처리해주고, 앞에 두개의 노드는 위치를 바꾼 후 뒤에 노드와 연결해준다.
+             
+2. 시간복잡도 : O(N), N은 노드의 개수
+3. 자료구조 :
+    Linked list
+    
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+            //먼저 헤드노드가 비어있거나, 헤드노드 하나뿐이라면 그대로 종료
+            if(head == null || head.next == null) return head;
+
+            ListNode firstNode = head;
+            ListNode secondNode = head.next;
+            ListNode newHead = head.next;
+            ListNode temp;            
+            
+                while(true){
+                    temp = firstNode;
+                if(secondNode.next == null){
+                    firstNode.next = null;
+                    secondNode.next = firstNode;
+                    temp.next = null;
+                    return newHead;
+                }
+                else if(secondNode.next != null && secondNode.next.next == null){
+                    firstNode.next = secondNode.next;
+                    secondNode.next = firstNode;
+                    firstNode = firstNode.next;
+                    temp.next = firstNode;
+                    return newHead;
+                }
+                else if(secondNode.next != null && secondNode.next.next != null){
+                    firstNode.next = secondNode.next;
+                    secondNode.next = firstNode;
+                    firstNode = firstNode.next;
+                    secondNode = firstNode.next;
+                    temp.next = secondNode;
+                }
+                if(secondNode == null) break;
+                }
+                return newHead;
+    }
+}
