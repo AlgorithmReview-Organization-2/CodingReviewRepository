@@ -1,0 +1,15 @@
+https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+
+1. 아이디어 : nums를 다시 정렬하고, 이분탐색으로 target 값을 갖는지 확인한다.
+2. 시간복잡도 : O(NlogN) N은 nums의 길이
+3. 자료구조 :
+    배열
+    
+class Solution {
+    public boolean search(int[] nums, int target) {
+            Arrays.sort(nums);
+            
+            if(Arrays.binarySearch(nums, target) < 0) return false;
+            else return true;
+    }
+}
