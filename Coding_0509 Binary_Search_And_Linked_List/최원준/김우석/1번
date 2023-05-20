@@ -1,0 +1,29 @@
+https://leetcode.com/problems/find-smallest-letter-greater-than-target/
+
+'''
+1. 아이디어 : 양 끝점을 투 포인터로 두고, 중간 지점의 문자를 target과 비교한다.
+              중간 지점의 문자가 target보다 크면 오른쪽 포인터를 감소시키고, 아니면 왼쪽 포인터를 증가시켜 중간 지점을 조정한다.
+2. 시간복잡도 : O(logN), N은 letters의 길이
+3. 자료구조 :
+    배열
+
+class Solution {
+    public char nextGreatestLetter(char[] letters, char target) {
+            int left = 0;
+            int right = letters.length - 1;
+            int index = Integer.MAX_VALUE;
+
+            while(left <= right){
+                int mid = (left + right) / 2;
+
+                if(letters[mid] > target){
+                    index = Math.min(index, mid);
+                    right = mid - 1;
+                }else{
+                    left = mid + 1;
+                }
+            }
+            
+            return index == Integer.MAX_VALUE ? letters[0] : letters[index];
+    }
+}
