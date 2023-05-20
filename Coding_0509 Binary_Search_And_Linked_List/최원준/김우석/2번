@@ -1,0 +1,28 @@
+https://leetcode.com/problems/find-the-distance-value-between-two-arrays/
+
+1. 아이디어 : 이중 for문을 돌면서 arr1의 원소와 arr2의 원소의 차이의 절댓값이 d보다 작거나 같으면 반복문을 빠져나오고, 그런 원소가 없다면 answer 값을 증가시킨다.
+2. 시간복잡도 : O(NM) N은 arr1의 길이, M은 arr2의 길이
+3. 자료구조 :
+    배열
+    
+class Solution {
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+            int answer = 0;
+            int arr1Length = arr1.length;
+            int arr2Length = arr2.length;
+
+            for(int i = 0; i < arr1Length; i++){
+                int j = 0;
+                for(; j < arr2Length; j++){
+                    if(Math.abs(arr1[i] - arr2[j]) <= d){
+                        break;
+                    }
+                }
+                if(j == arr2Length){
+                    answer++;
+                }
+            }
+
+            return answer;
+    }
+}
