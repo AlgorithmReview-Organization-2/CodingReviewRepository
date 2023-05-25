@@ -1,0 +1,27 @@
+https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/
+
+1. 아이디어 :
+    복사된 트리를 후위순회하면서 target 값을 가진 노드를 찾아 반환한다. 
+2. 시간복잡도 :
+     O(N), N은 노드의 개수
+3. 자료구조 :
+    트리
+    
+class Solution {
+    public static TreeNode answer;
+
+    public static void postOrder(TreeNode head, TreeNode target){
+        if(head == null) return;
+        postOrder(head.left, target);
+        postOrder(head.right, target);
+        if(head.val == target.val){
+            answer = head;
+            return;
+        }
+    }
+    public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+        postOrder(cloned, target);
+        return answer;        
+    }
+}
+    
