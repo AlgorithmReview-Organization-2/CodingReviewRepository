@@ -1,0 +1,48 @@
+https://leetcode.com/problems/recover-a-tree-from-preorder-traversal/
+
+1. 아이디어 :
+    String을 돌면서 '-'의 개수를 level로 생각하고 재귀 호출을 통해 트리를 완성한다.
+2. 시간복잡도 :
+    O(N), N은 String의 길이
+3. 자료구조 :
+    트리
+
+class Solution {
+    int i = 0;
+    
+    private TreeNode recursivePreorder(String traversal, int level){
+        if(i == traversal.length()) return null;
+        int j = i;
+        int count = 0;
+
+        //먼저 문자열을 돌면서 숫자를 만날때까지 '-'의 개수를 센다.
+        while(traversal.charAt(j) == '-'){
+            count++;
+            j++;
+        }
+
+        //개수가 레벨과 같다면 노드를 연결해준다.
+        if(count == level){
+            int k = j; //k는 숫자가 시작되는 위치
+
+            //넣을 값을 substring으로 구하기
+            while(j < traversal.length() && traversal.charAt(j) != '-'){
+                j++;
+            }
+            String temp = traversal.substring(k,j);
+            //String에서의 포인터 위치 업데이트
+            i = j;
+            //노드에 해당 값을 넣어주고
+            TreeNode root = new TreeNode(Integer.valueOf(temp));
+            //재귀호출을 통해 다음으로 넘어간다.
+            root.left = recursivePreorder(traversal, level+1);
+            root.right = recursivePreorder(traversal, level+1);
+            return root;
+        }
+        else return null;
+    }
+
+    public TreeNode recoverFromPreorder(String traversal) {
+        return recursivePreorder(traversal, 0);        
+    }
+}
