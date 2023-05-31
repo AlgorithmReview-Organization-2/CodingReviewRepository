@@ -1,0 +1,61 @@
+https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/
+
+1. 아이디어 :
+    nums에 있는 각 list의 인덱스를 저장할 배열을 만든다. 각 list의 최소값들을 먼저 비교하면서 범위의 시작점을 찾고, 인덱스를 증가시켜가며 비교를 통해 최적의 범위를 찾는다.
+2. 시간복잡도 :
+    O(N^2logM), N은 nums의 길이, M은 큐의 길이
+3. 자료구조 :
+    배열, 우선순위 큐
+    
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
+
+class Solution {
+    public int[] smallestRange(List<List<Integer>> nums) {
+        // 모든 리스트의 현재 인덱스를 저장하기 위한 배열
+        int[] pointers = new int[nums.size()];
+
+        // 현재 범위의 최소값과 최대값을 저장할 변수
+        int minValue = Integer.MAX_VALUE;
+        int maxValue = Integer.MIN_VALUE;
+
+        // 현재 범위의 길이와 시작 숫자가 작은 범위의 시작 인덱스
+        int range = Integer.MAX_VALUE;
+        int startIdx = -1;
+
+        // 우선순위 큐를 사용하여 현재 범위의 최소값을 유지하면서 리스트를 탐색
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> nums.get(a).get(pointers[a])));
+
+        for (int i = 0; i < nums.size(); i++) {
+            minHeap.add(i);
+            maxValue = Math.max(maxValue, nums.get(i).get(0));
+        }
+
+        while (true) {
+            // 현재 범위의 최소값과 최대값 갱신
+            int minIndex = minHeap.poll();
+            minValue = nums.get(minIndex).get(pointers[minIndex]);
+
+            // 범위의 길이와 시작 숫자 비교하여 갱신
+            if (range > maxValue - minValue) {
+                range = maxValue - minValue;
+                startIdx = minValue;
+            }
+
+            // 리스트의 끝에 도달한 경우 종료
+            if (pointers[minIndex] == nums.get(minIndex).size() - 1) {
+                break;
+            }
+
+            // 다음 값으로 포인터 이동
+            pointers[minIndex]++;
+            if (pointers[minIndex] < nums.get(minIndex).size()) {
+                minHeap.add(minIndex);
+                maxValue = Math.max(maxValue, nums.get(minIndex).get(pointers[minIndex]));
+            }
+        }
+
+        return new int[]{startIdx, startIdx + range};
+    }
+}
