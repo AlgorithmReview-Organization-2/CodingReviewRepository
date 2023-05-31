@@ -1,0 +1,40 @@
+https://leetcode.com/problems/largest-number-after-digit-swaps-by-parity/
+
+
+1. 아이디어 :
+    인덱스를 나타내는 num과 같은 길이의 arr 배열을 하나 만들어 둔다. num을 돌면서 해당 짝수, 홀수 여부에 따라 알맞는 우선순위 큐에 넣고 arr에 해당 인덱스에 홀짝 표시를 해준다. 마지막으로 arr을 돌면서 해당 자리에 홀짝 중 어떤 수가 올 것인지 확인하고 해당 우선순위 큐에서 빼서 StringBuilder에 추가해준다.
+2. 시간복잡도 :
+    O(N), N은 num의 길이
+3. 자료구조 :
+    배열, 우선순위큐
+
+class Solution {
+    public int largestInteger(int num) {
+        int answer = 0;
+            String str = String.valueOf(num);
+            int[] arr = new int[str.length()];
+            StringBuilder sb = new StringBuilder();
+            PriorityQueue<Integer> evenQue = new PriorityQueue<>(Comparator.reverseOrder());
+            PriorityQueue<Integer> oddQue = new PriorityQueue<>(Comparator.reverseOrder());
+
+            for(int i = 0; i < str.length(); i++){
+                int temp = Integer.valueOf(String.valueOf(str.charAt(i)));
+                if(temp % 2 == 0){
+                    evenQue.add(temp);
+                }else{
+                    oddQue.add(temp);
+                    arr[i] = -1;
+                }
+            }
+
+            for(int i = 0; i < arr.length; i++){
+                if(arr[i] == -1){
+                    sb.append(oddQue.poll());
+                }else{
+                    sb.append(evenQue.poll());
+                }
+            }
+            answer = Integer.valueOf(sb.toString());
+            return answer;
+    }
+}
