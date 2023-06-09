@@ -1,0 +1,44 @@
+https://leetcode.com/problems/palindrome-partitioning/
+
+1.시간복잡도 : O(2^N) N은 문자열의 길이
+2.아이디어 : 단어의 substring을 넘겨주면서 재귀적으로 Palindrome인지 확인한다.
+3.자료구조 : 배열
+
+class Solution {
+    List<List<String>> answer = new ArrayList<>();
+
+
+    public boolean isPalindrome(String word){
+        int startIndex = 0;
+        int lastIndex = word.length()-1;
+
+        while(startIndex <= lastIndex){
+            if(word.charAt(startIndex) != word.charAt(lastIndex)) return false;
+            startIndex++;
+            lastIndex--;
+        }
+        return true;
+    }
+
+    public void backtracking(String s, ArrayList list){
+        if(s.isEmpty()){
+            answer.add(new ArrayList<>(list));
+            return;
+        }
+
+        for(int i = 0; i < s.length(); i++){
+            String temp = s.substring(0, i+1);
+            if(isPalindrome(temp)){
+                list.add(temp);
+                backtracking(s.substring(i+1), list);
+                list.remove(list.size()-1);
+            }
+        }
+    }
+
+    public List<List<String>> partition(String s) {
+        backtracking(s, new ArrayList<>());
+        
+        return answer;
+    }
+}
