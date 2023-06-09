@@ -1,0 +1,59 @@
+https://leetcode.com/problems/unique-paths-iii/
+
+1.시간복잡도 : O(4^MN) M,N은 grid 행렬의 행과 열의 길이 
+2.아이디어 : 같은 크기의 boolean 배열을 만들어서 방문했거나, 장애물이 있는 자리는 체크해가며 재귀를 호출한다. 지나가야할 곳의 개수를 zero로 기록하고 메소드를 작성한다. 유효한 인덱스인지 확인하고, 도착점인 동시에 모든 곳을 지나갔다면 count 개수를 증가 시키고 return! 그렇지 않으면 네 방향으로 재귀함수를 호출한다.
+3.자료구조 : 배열
+
+class Solution {
+    static int count=0;
+    static int[] dx = {-1, 0, 1, 0};
+    static int[] dy = {0, 1, 0, -1};
+
+    public int uniquePathsIII(int[][] grid) {
+        int zero = 0; 
+        int startX = 0; 
+        int startY = 0; 
+        int m=grid.length;
+        int n=grid[0].length;
+        boolean isBlocked[][]=new boolean[m][n];
+        for(int r = 0; r < grid.length; r++){ 
+            for(int c = 0; c < grid[0].length; c++){ 
+                if(grid[r][c] == 0) zero++;
+                else if(grid[r][c] == 1){
+                    startX = r; 
+                    startY = c;
+                }
+                else if(grid[r][c]==-1){
+                    isBlocked[r][c]=true;
+                }
+            }
+        }
+        count=0;
+        backtrack(grid, startX, startY, zero,isBlocked);
+        return count;
+    }
+
+    public void backtrack(int grid[][], int x, int y, int zero,boolean isBlocked[][]){
+       
+        if(x < 0 || y < 0 || x >= grid.length || y >= grid[0].length 
+         ||isBlocked[x][y]) return ;
+
+        if(grid[x][y] == 2 && zero==-1)
+        {
+           count++;
+           return;
+        }
+
+        isBlocked[x][y]=true;
+        zero--; 
+        // up right down left
+        for (int i = 0; i < 4; i++) {
+            int nextX = x + dx[i];
+            int nextY = y + dy[i];
+            backtrack(grid,nextX,nextY,zero,isBlocked);
+        }
+       
+        isBlocked[x][y]=false;
+        zero++;
+    }
+}
