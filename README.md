@@ -1,3 +1,22 @@
+# AlgorithmCodes 3
+Repository for submitting and reviewing peer answers for coding questions.
+
+<br>
+<b> Algorithm Categories to cover </b>
+
+- 07/04 Array_And_Hashing_And_Stack
+- 07/11 Two_Pointers_And_Sliding_Window
+- 07/18 Binary_Search_And_Linked_List
+- 07/25 Tree_And_Tries
+- 08/01 Heap_And_Priority_Queue_And_Intervals
+- 08/08 Backtracking
+- 08/15 Graph
+- 08/22 1D_DP
+- 08/29 2D_DP
+- 09/05 Greedy
+--------
+
+
 # AlgorithmCodes 2 
 Repository for submitting and reviewing peer answers for coding questions.
 
