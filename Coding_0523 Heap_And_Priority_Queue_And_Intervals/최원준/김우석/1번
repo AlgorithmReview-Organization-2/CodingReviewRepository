@@ -1,0 +1,28 @@
+https://leetcode.com/problems/make-array-zero-by-subtracting-equal-amounts/
+
+1. 아이디어 :
+    배열을 정렬한 뒤에서 순차적으로 돌면서 0이 아닌 수를 만나면 그 뒤에 수들에서 값을 빼준다.
+2. 시간복잡도 :
+    O(N^2), N은 nums의 길이
+3. 자료구조 :
+    배열
+
+class Solution {
+    public int minimumOperations(int[] nums) {
+        Arrays.sort(nums);
+        int count = 0;
+
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != 0){
+                int curr = nums[i];
+                count++;
+
+                for(int j = i; j < nums.length; j++){
+                    nums[j] -= curr;
+                }
+            }
+        }
+
+        return count;
+    }
+}
