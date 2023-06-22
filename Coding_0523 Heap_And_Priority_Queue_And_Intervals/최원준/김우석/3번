@@ -1,0 +1,41 @@
+https://leetcode.com/problems/maximum-score-from-removing-stones/
+
+1. 아이디어 :
+    먼저 주어진 수를 작은 순서대로 x,y,z에 저장한다. 점수를 최대한 많이 얻어야 하기 때문에, 가장 큰 수 z를 0으로 만드는 것을 기준으로 생각한다. 나머지 두 수 x,y의 합에 따라 조건에 맞는 연산을 진행하면서 점수를 저장한다.
+2. 시간복잡도 :
+    O(N), N은 a,b,c 중 가장 큰 수의 크기
+3. 자료구조 :
+    우선순위 큐
+
+class Solution {
+    public int maximumScore(int a, int b, int c) {
+            int answer = 0;
+            PriorityQueue<Integer> que = new PriorityQueue<>();
+            int x = -1;
+            int y = -1;
+            int z = -1;
+            int count = 0;
+
+            que.add(a);
+            que.add(b);
+            que.add(c);
+            
+            x = que.poll();
+            y = que.poll();
+            z = que.poll();
+
+            if(x+y == z) answer = z;
+            else if(x+y < z) answer = x+y;
+            else if(x+y > z){
+                while(x+y > z){
+                    x--;
+                    y--;
+                    count++;
+                }
+                answer = x+y+count;
+            }
+
+            return answer;
+        
+    }
+}
