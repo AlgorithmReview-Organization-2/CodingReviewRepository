@@ -1,0 +1,43 @@
+https://leetcode.com/problems/letter-tile-possibilities/
+
+1. 아이디어 : 백트래킹 재귀함수 안에서 for문 돌면서 알파벳 선택(선택 여부 확인).
+여기서는 어짜피 문자열의 길이까지 모든 경우를 탐색하기 때문에 중간에 조건을 걸어서 빠져나올 필요없이 문자열 끝까지 돌면 된다.
+2. 시간복잡도 : O(N!) , N은 문자열의 길이
+3. 자료구조 : 배열
+
+class Solution {
+    public boolean[] check;
+    public HashSet<String> set = new HashSet<>();
+    public StringBuilder sb = new StringBuilder();
+    public String word;
+    public int length;
+
+    public void backtracking(){
+        
+        set.add(sb.toString());
+
+        for(int i = 0; i < length; i++){
+            if(!check[i]){
+                check[i] = true;
+                sb.append(word.charAt(i));
+                backtracking();
+                check[i] = false;
+
+                if(sb.length() != 0){
+                    sb.deleteCharAt(sb.length()-1);
+                }
+            }
+        }
+
+    }
+
+    public int numTilePossibilities(String tiles) {
+        length = tiles.length();
+        check = new boolean[length];
+        word = tiles;
+
+        backtracking();
+
+        return set.size()-1;
+    }
+}
