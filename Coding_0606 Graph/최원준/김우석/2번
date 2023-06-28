@@ -1,0 +1,12 @@
+https://leetcode.com/problems/find-center-of-star-graph/
+
+1. 시간복잡도 : O(1)
+2. 아이디어 : 센터노드에 해당하는 숫자는 모든 행에서 등장해야 한다. 그 아이디어를 바탕으로 O(1)로 풀 수 있다.
+3. 자료구조 : 배열
+
+class Solution {
+
+  public int findCenter(int[][] e) {
+    return e[0][0] == e[1][0] || e[0][0] == e[1][1] ? e[0][0] : e[0][1];
+}
+}
