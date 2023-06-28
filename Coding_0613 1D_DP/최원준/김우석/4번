@@ -1,0 +1,57 @@
+https://leetcode.com/problems/unique-paths-ii/
+
+//시간복잡도 : O(MN) M,N은 각각 주어진 2차 배열의 행과 열
+//아이디어 : 고등학교 수학 문제 중 표의 특정 지점에서 특정 지점까지 가는 방법의 수를 구하는 방식을 dp로 구현하면 간단하게 풀린다. 먼저 첫번째 행과 첫번째 열의 값들을 dp에 저장해 주고, 이후에는 각 지점에 도달할 수 있는 방법의 수(dp[윗칸] + dp[왼쪽칸])를 구해나가며, 답은 dp의 제일 마지막 수
+//자료구조 : 배열
+
+class Solution {
+
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int answer = 0;
+        //처음부터 장애물이 있으면 끝임.
+        if(obstacleGrid[0][0] == 1) return answer;
+
+        int row = obstacleGrid.length;
+        int col = obstacleGrid[0].length;
+
+        int[][] dp = new int[row][col];
+        dp[0][0] = 1;
+        
+        //dp배열에는 도달할 수 있는 길의 수만 저장한다.
+        //먼저, obstacleGrid의 장애물 여부를 판단해서 dp배열 첫 행의 값들을 채운다.
+        for(int i = 0; i < col; i++){
+            if(obstacleGrid[0][i] == 1){
+                for(int j = i; j < col; j++){
+                    dp[0][j] = 0;
+                }
+                break;
+            }
+            else dp[0][i] = 1;
+        }
+
+        //다음으로 obstacleGrid의 장애물 여부를 판단해서 dp배열 첫 열의 값들을 채운다.
+        for(int i = 0; i < row; i++){
+            if(obstacleGrid[i][0] == 1){
+                for(int j = i; j < row; j++){
+                    dp[j][0] = 0;
+                }
+                break;
+            }
+            else dp[i][0] = 1;
+        }
+
+        //이후 (1,1)부터 나머지는 obstacleGrid의 장애물이 있으면 0, 없으면 dp[윗칸] + dp[왼쪽칸]를 계산하며 채워간다.
+        for(int i = 1; i < row; i++){
+            for(int j = 1; j < col; j++){
+                if(obstacleGrid[i][j] != 1){
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1];
+                }
+                else dp[i][j] = 0;
+            }
+        }
+
+        //dp 배열의 마지막 값이 도달할 수 있는 모든 경우의 수!
+        answer = dp[row-1][col-1];
+        return answer;
+    }
+}
