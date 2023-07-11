@@ -1,0 +1,40 @@
+# https://www.acmicpc.net/problem/10815
+
+'''
+1. 아이디어 :
+    Set에 상근의 카드를 저장하고, 하나씩 비교함
+2. 시간복잡도 :
+    O(n)
+3. 자료구조 :
+    셋
+'''
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int N = Integer.parseInt(br.readLine());
+        Set<Integer> set = new HashSet<>();
+        String[] split = br.readLine().split(" ");
+
+        for (int i = 0; i < N; i++) {
+            set.add(Integer.valueOf(split[i]));
+        }
+
+        int M = Integer.parseInt(br.readLine());
+        String[] split2 = br.readLine().split(" ");
+        for (int i = 0; i < M; i++) {
+            if (set.contains(Integer.valueOf(split2[i]))) {
+                bw.write("1 ");
+            } else {
+                bw.write("0 ");
+            }
+        }
+        
+        bw.flush();
+    }
+}
