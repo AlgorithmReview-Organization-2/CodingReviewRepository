@@ -1,0 +1,38 @@
+# https://www.acmicpc.net/problem/3986
+
+'''
+1. 아이디어 :
+    스택 앞 부분과 같으면 빼주고, 다르면 더해줌
+2. 시간복잡도 :
+    O(n^2)
+3. 자료구조 :
+    스택
+'''
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+
+        int answer = 0;
+        for (int i = 0; i < N; i++) {
+            String temp = sc.next();
+            Stack<Character> stack = new Stack<>();
+            for (char c : temp.toCharArray()) {
+                if(!stack.isEmpty() && stack.peek() == c) {
+                    stack.pop();
+                } else {
+                    stack.push(c);
+                }
+            }
+
+            if (stack.isEmpty()) answer++;
+        }
+
+        System.out.println(answer);
+    }
+}
