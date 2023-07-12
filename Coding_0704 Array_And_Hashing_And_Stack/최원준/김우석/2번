@@ -1,0 +1,19 @@
+https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
+
+시간복잡도 : O(N^2), N은 배열의 길이
+아이디어 : 배열의 각 원소와 나머지를 비교해서 작은 것의 개수를 센다.
+자료구조 : 배열
+
+class Solution {
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        int length = nums.length;
+        int[] answer = new int[length];
+        
+        for(int i = 0; i < length; i++){
+            for(int j = 0; j < length; j++){
+                if(nums[j] < nums[i]) answer[i]++;
+            }
+        }
+    return answer;      
+    }
+}
