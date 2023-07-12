@@ -1,0 +1,23 @@
+# https://www.acmicpc.net/problem/10815
+
+'''
+1. 아이디어 :
+    해시셋을 사용
+2. 시간복잡도 :
+    O(n)
+3. 자료구조 :
+    해시셋
+'''
+
+
+import sys
+
+n, base_num = int(sys.stdin.readline()) , sorted(list(map(int, sys.stdin.readline().split())))
+m, check_num = int(sys.stdin.readline()), list(map(int, sys.stdin.readline().split()))
+
+ans = [0] * m
+base_num = set(base_num)
+for i in range(m):
+    if check_num[i] in base_num:
+        ans[i] = 1
+print(*ans)
