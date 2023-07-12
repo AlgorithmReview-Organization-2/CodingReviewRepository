@@ -1,0 +1,29 @@
+# https://leetcode.com/problems/determine-the-winner-of-a-bowling-game/description/
+
+'''
+1. 아이디어 :
+    각각 [0, 0, ...읖 앞에둔 player1(p1)과 player2(p2) 만든다
+    2번째부터 p2길이까지 돌면서, 0번째, 1번째를 확인한다
+    둘중 하나가 10이면 해당 인덱스 숫자를 x2한다
+2. 시간복잡도 :
+    O(n)
+3. 자료구조 :
+    배열
+'''
+
+
+
+class Solution:
+    def isWinner(self, player1: List[int], player2: List[int]) -> int:
+        p1 = [0, 0] + player1
+        p2 = [0, 0] + player2
+
+        for i in range(2, len(p1)):
+            if p1[i-2] == 10 or p1[i-1] == 10:
+                player1[i-2] *= 2
+            if p2[i-2] == 10 or p2[i-1] == 10:
+                player2[i-2] *= 2
+        player1 = sum(player1)
+        player2 = sum(player2)
+
+        return 1 if player1>player2 else 2 if player1<player2 else 0
