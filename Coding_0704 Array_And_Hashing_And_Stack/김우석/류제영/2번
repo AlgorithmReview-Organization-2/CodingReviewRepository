@@ -1,0 +1,50 @@
+# https://leetcode.com/problems/construct-smallest-number-from-di-string/
+
+'''
+1. 아이디어 :
+    1. 배열에 오름차순으로 저장 
+    2. "D"를 만나면 "I"를 만날때까지 카운트
+    3. 내림차순으로 정렬
+2. 시간복잡도 :
+    O(n^2)
+3. 자료구조 :
+   배열
+'''
+
+class Solution {
+    public String smallestNumber(String pattern) {
+        String[] split = pattern.split("");
+
+        int num = 1;
+        int[] arr = new int[split.length + 1];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = num++;
+        }
+
+        for (int i = 0; i < split.length; i++) {
+            if (split[i].equals("D")) {
+                int idx = i;
+                while (idx < split.length && !split[idx].equals("I")) {
+                    idx++;
+                }
+
+                int lt = idx;
+                int rt = i;
+                while (lt > rt) {
+                    int temp = arr[rt];
+                    arr[rt++] = arr[lt];
+                    arr[lt--] = temp;
+                }
+
+                i = idx;
+            }
+        }
+
+        String answer = "";
+        for (int i = 0; i < arr.length; i++) {
+            answer += arr[i];
+        }
+
+        return answer;
+    }
+}
