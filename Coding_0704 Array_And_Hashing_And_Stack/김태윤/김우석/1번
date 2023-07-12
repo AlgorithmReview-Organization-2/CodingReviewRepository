@@ -1,0 +1,27 @@
+https://school.programmers.co.kr/learn/courses/30/lessons/12906
+
+//시간복잡도 : O(N), N은 arr의 길이
+//아이디어 : arr을 돌면서 다음 원소와 값이 다를 때만 해당 값을 temp 배열에 추가해준다. 그리고 제일 마지막 원소는 무조건 temp에 추가해준다. 그리고 temp를 int[] answer로 옮겨준다.
+//자료구조 : 배열
+
+import java.util.*;
+
+public class Solution {
+    public int[] solution(int []arr) {
+        int[] answer = {};
+        List<Integer> temp = new ArrayList<>();
+        
+        for(int i = 0; i < arr.length-1; i++){
+            if(arr[i] != arr[i+1]) temp.add(arr[i]);    
+        }
+        temp.add(arr[arr.length-1]);
+        answer = new int[temp.size()];
+        
+        for(int i = 0; i < answer.length; i++){
+            answer[i] = temp.get(i);
+        }
+        
+
+        return answer;
+    }
+}
