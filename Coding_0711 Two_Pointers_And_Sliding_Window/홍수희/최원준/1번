@@ -1,0 +1,30 @@
+# https://www.acmicpc.net/problem/7795
+
+'''
+1. 아이디어 :
+    A, B를 정렬하고, A의 원소가 B의 원소보다 작을 때마다 B의 원소의 인덱스를 더해준다.
+2. 시간복잡도 :
+    T * O(NlogN)
+3. 자료구조 :
+    배열
+'''
+
+for _ in range(int(input())):
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    A.sort()
+    B.sort()
+
+    count = 0
+    pair = 0
+
+    for i in range(N):
+        while True:
+            if count == M or A[i] <= B[count]:
+                pair += count
+                break
+            else:
+                count += 1
+    print(pair)
