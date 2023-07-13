@@ -1,0 +1,60 @@
+# https://www.acmicpc.net/problem/1021
+
+'''
+1. 아이디어 :
+    찾을려는 수의 인덱스가 덱 사이즈의 절반보다 크면 3번 연산을, 작으면 2번 연산
+2. 시간복잡도 :
+    O(n^2)
+3. 자료구조 :
+    덱, 배열
+'''
+
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        int[] findArr = new int[M];
+        for (int i = 0; i < M; i++) {
+            findArr[i] = sc.nextInt();
+        }
+
+        Deque<Integer> deque = new LinkedList<>();
+        for (int i = 1; i <= N; i++) {
+            deque.offer(i);
+        }
+
+        int count = 0;
+        for (int i = 0; i < M; i++) {
+            int idx = 0;
+            for (Integer integer : deque) {
+                if (integer == findArr[i]) {
+                    break;
+                } else {
+                    idx++;
+                }
+            }
+
+            int half =  deque.size() / 2;
+            if (idx > half) {
+                while (deque.peek() != findArr[i]) {
+                    deque.offerFirst(deque.pollLast());
+                    count++;
+                }
+            } else {
+                while (deque.peek() != findArr[i]) {
+                    deque.offerLast(deque.pollFirst());
+                    count++;
+                }
+            }
+
+            deque.poll();
+        }
+        System.out.println(count);
+    }
+}
