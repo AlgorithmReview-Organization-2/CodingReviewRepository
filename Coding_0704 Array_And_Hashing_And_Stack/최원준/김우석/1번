@@ -1,0 +1,29 @@
+https://leetcode.com/problems/unique-number-of-occurrences/
+
+시간복잡도 O(N) : N은 주어진 배열의 길이
+아이디어 : 배열을 돌면서 숫자와 등장한 횟수를 map에 저장한다. 그리고 그 값들이 서로 다르면 true반환.
+자료구조 : 배열
+
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        Set<Integer> checkNum = new HashSet<>();
+        Set<Integer> checkCount = new HashSet<>();
+        Map<Integer, Integer> record = new HashMap<>();
+        
+        for(int i = 0; i < arr.length; i++){
+
+            int temp = arr[i];
+            checkNum.add(temp);
+            record.put(temp, record.getOrDefault(temp,0)+1);
+            
+        }
+        for(Integer key : record.keySet()){
+
+            checkCount.add(record.get(key));
+
+        }
+        
+        return checkCount.size() == checkNum.size() ? true : false;
+
+    }
+}
