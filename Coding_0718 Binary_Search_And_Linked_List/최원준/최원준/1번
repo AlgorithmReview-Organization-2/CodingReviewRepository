@@ -1,0 +1,26 @@
+# https://leetcode.com/problems/middle-of-the-linked-list/
+
+'''
+1. 아이디어 :
+    포인터 두개를 두고, 하나는 2칸씩, 하나는 1칸씩 이동하면, 2칸씩 이동하는 포인터가 끝에 도달했을 때, 1칸씩 이동하는 포인터는 중간에 도달한다.
+2. 시간복잡도 :
+    O(N)
+3. 자료구조 :
+    링크드리스트
+'''
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        slow = head
+        fast = head
+
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow.next if fast.next else slow
+    
