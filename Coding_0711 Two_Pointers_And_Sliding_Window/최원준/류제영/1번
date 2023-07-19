@@ -1,0 +1,36 @@
+# https://leetcode.com/problems/rearrange-array-elements-by-sign/submissions/
+
+'''
+1. 아이디어 :
+    음수, 양수를 다른 큐에 각각 저장하여 하나씩 넣어줌
+2. 시간복잡도 :
+    O(n)
+3. 자료구조 :
+    큐
+'''
+
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        Queue<Integer> queue1 = new LinkedList<>();
+        Queue<Integer> queue2 = new LinkedList<>();
+
+        for (int num : nums) {
+            if (num > 0) {
+                queue1.offer(num);
+            } else {
+                queue2.offer(num);
+            }
+        }
+
+        int[] answer = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            if (i % 2 == 0 && !queue1.isEmpty()) {
+                answer[i] = queue1.poll();
+            } else if (!queue2.isEmpty()) {
+                answer[i] = queue2.poll();
+            }
+        }
+
+        return answer;
+    }
+}
