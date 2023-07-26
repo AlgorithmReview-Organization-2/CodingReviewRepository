@@ -1,0 +1,45 @@
+# https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/
+
+'''
+1. 아이디어 :
+    1) 각 row에 대한 이분탐색
+    2) 가로 세로 정렬이 돼있으므로,
+        grid[x][y] > grid[x][y+1] 이고, grid[x][y] > grid[x+1][y], grid[x][y]>grid[x+1][y+1]을 사용
+2. 시간복잡도 :
+    1) O(m*logn)
+    2) O(n)
+3. 자료구조 :
+    1) 배열
+    2) 배열
+'''
+
+
+#1)
+def binary_search(row):
+    start, end = 0, len(row)
+    while start<end:
+        mid = start +(end -start) // 2
+        if row[mid]<0:
+            end = mid
+        else:
+            start = mid+1
+    return len(row)- start
+
+count = 0
+for row in grid:
+    count += binary_search(row)
+return(count)
+
+
+#2)
+i = len(grid)-1
+j = 0
+count = 0
+while i>=0 and j< len(grid[0]):
+    print(i,j)
+    if grid[i][j] < 0:
+        count += len(grid[0])-j
+        i -= 1
+    else:
+        j +=1
+return count
