@@ -1,0 +1,31 @@
+https://leetcode.com/problems/maximum-average-subarray-i/
+
+//시간복잡도 : O(N), N은 nums 배열의 길이
+//아이디어 : 길이 k를 갖는 슬라이딩 윈도우로 접근한다. 평균을 구하기 위한 합을 구할 때 매번 범위에 해당하는 값들을 더하지 않고, 옮겨진 포인터에 해당하는 값만 추가하고 빼주는 식으로 접근한다.
+//자료구조 : 배열
+
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        int left = 0;
+        int right = left + k - 1;
+        int length = nums.length;
+        double answer = Double.NEGATIVE_INFINITY;
+        double sum = 0;
+
+        for(int i = left; i <= right; i++){
+                sum += nums[i];
+        }
+        answer = Math.max(answer, sum / k);
+
+        while(right < length){
+            if(right + 1 < length){
+                sum -= nums[left];
+                sum += nums[right+1];
+            }
+            left++;
+            right++;
+            answer = Math.max(answer, sum / k);
+        }
+        return answer;
+    }
+}
