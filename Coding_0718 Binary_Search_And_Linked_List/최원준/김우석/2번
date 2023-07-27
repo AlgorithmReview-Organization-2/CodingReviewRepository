@@ -1,0 +1,33 @@
+https://leetcode.com/problems/middle-of-the-linked-list/
+
+//시간복잡도:O(n), n은 linked list의 길이
+//아이디어:반복문을 돌면서 각 노드를 list에 담고 개수를 센다. 개수를 기반으로 중앙에 해당하는 노드를 list에서 꺼내서 반환한다.
+//자료구조 : 배열
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode middleNode(ListNode head) {
+            ListNode answer = null;
+            List<ListNode> list = new ArrayList<>();
+            int count = 0;
+            
+            while(head != null){
+                list.add(head);
+                head = head.next;
+                count++;
+            }
+            
+            answer = list.get(count/ 2);         
+
+            return answer;
+    }
+}

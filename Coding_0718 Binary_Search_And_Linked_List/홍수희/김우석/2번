@@ -1,0 +1,37 @@
+https://leetcode.com/problems/palindrome-linked-list/
+
+//시간복잡도 : O(N), N은 링크드리스트의 길이
+//아이디어 : 노드를 돌면서 문자열로 저장하고, 그 문자열을 역순으로 정렬한것과 비교해서 답을 반환한다.
+//자료구조 : 링크드리스트
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+
+        StringBuilder sb = new StringBuilder();
+        String temp;
+        String tempRev;
+
+            while(head != null){
+                 sb.append(head.val);
+                 head = head.next;
+            }
+            temp = sb.toString();
+            tempRev = sb.reverse().toString();
+        
+            if(tempRev.equals(temp)){
+                return true;
+            }
+            else return false;
+        
+    }
+}
