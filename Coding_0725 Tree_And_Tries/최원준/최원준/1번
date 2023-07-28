@@ -1,0 +1,31 @@
+# https://leetcode.com/problems/binary-tree-inorder-traversal/description/
+
+'''
+1. 아이디어 :
+    inorderTraversal : left -> root -> right
+2. 시간복잡도 :
+    O(N)
+3. 자료구조 :
+    베열
+'''
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans = []
+
+        def dfs(node):
+            if not node:
+                return
+
+            dfs(node.left)
+            ans.append(node.val)
+            dfs(node.right)
+
+        dfs(root)
+        return ans
