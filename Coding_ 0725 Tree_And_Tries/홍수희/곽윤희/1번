@@ -1,0 +1,28 @@
+// https://www.acmicpc.net/problem/14244
+// 노드개수, 리프노드 개수가 주어질 때, 트리의 간선 정보를 출력, 단 트리의 정점은 0번부터 n-1까지이다.
+// 시간복잡도 : O(N)
+// 아이디어 : 리프노드 개수만큼 0노드에 순차적으로 연결 후 마지막 리프노드에 나머지 노드들을 리프노드로 연결한다.
+// 자료구조 : 트리
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken()); // 노드 개수
+        int m = Integer.parseInt(st.nextToken()); // 리프 노드 개수
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < m ;i++) {
+            sb.append(0).append(" ").append(i + 1).append("\n");
+        }
+        for (int i = m; i < n-1; i++) {
+            sb.append(i).append(" ").append(i+1).append("\n");
+        }
+        System.out.print(sb);
+    }
+}
