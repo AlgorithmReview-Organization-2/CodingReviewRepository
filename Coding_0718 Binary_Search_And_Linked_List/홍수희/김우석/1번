@@ -1,0 +1,29 @@
+https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/
+
+//시간복잡도 : O(MlogN), M,N은 주어진 행렬의 행과 열의 길이
+//아이디어 : 각 행마다 이분탐색을 통해 음수의 개수를 더해준다.
+//자료구조 : 배열
+
+class Solution {
+    public int countNegatives(int[][] grid) {
+        int answer = 0;
+        int row = grid.length; //세로 길이
+        int col = grid[0].length; //가로 길이
+
+        for(int i = 0; i < row; i++) {
+            int left = 0;
+            int right = col - 1;
+            int mid = -1;
+            while(left <= right){
+                mid = left + (right - left) / 2;
+                if(grid[i][mid] < 0) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            answer += (col - left);
+        }
+        return answer;
+    }
+}

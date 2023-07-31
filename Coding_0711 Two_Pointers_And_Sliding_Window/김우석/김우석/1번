@@ -1,0 +1,32 @@
+https://leetcode.com/problems/sort-colors/
+
+//시간복잡도 : O(N), N은 nums의 길이
+//아이디어 : 포인터를 left, right 두개를 둔다. nums 배열을 돌면서 값이 0이면 answer[left]에 넣고 left++, 값이 2면 answer[right]에 넣고 right--, 마지막에 left와 right 사이는 1로 채워준다.
+//자료구조 : 배열
+
+class Solution {
+    public void sortColors(int[] nums) {
+        int left = 0;
+        int right = nums.length - 1;
+        int length = nums.length;
+        int[] answer = new int[length];
+
+        for(int i = 0; i < length; i++){
+            if(nums[i] == 0){
+                answer[left++] = nums[i];
+            }
+            else if(nums[i] == 2){
+                answer[right--] = nums[i];
+            }
+        }
+
+        for(int i = left; i <= right; i++){
+            answer[i] = 1;
+        }
+
+        for(int i = 0; i < length; i++){
+            nums[i] = answer[i];
+        }
+
+    }
+}
