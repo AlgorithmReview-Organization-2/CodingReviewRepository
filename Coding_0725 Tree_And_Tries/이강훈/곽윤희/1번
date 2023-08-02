@@ -1,0 +1,56 @@
+// https://www.acmicpc.net/problem/14426
+// 총 N개의 문자열로 이루어진 집합 S가 주어진다. 입력으로 주어지는 M개의 문자열 중에서 집합 S에 포함되어 있는 문자열 중 적어도 하나의 접두사인 것의 개수를 구하시오.
+// 시간복잡도 : O(N)
+// 아이디어 : Trie (각 노드가 단어의 문자를 나타내며 루트 노드에서 잎 노드까지의 각 경로가 단어를 형성 주어진 단어가 트라이에 있는지 검색하는 데 유용한 빠른 접두사 기반 검색을 가능하게 한다.)
+// 자료구조 : Trie
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+class Node {
+    Map<Character, Node> childNode = new HashMap<>();
+}
+class Main {
+    static void insert(Node node, String str) {
+        for (int i = 0; i < str.length(); i++) {
+            // default V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction)
+            // key : Map의 키 값
+            // mappingFunction 람다 함수는 key 값이 존재하지 않을 때만 실행된다
+            //반환값
+            //key 값이 존재하는 경우 : map안에 있는 value을 반환한다
+            //key 값이 존재하지 않는 경우 : Map에 새로운 key와 value(mappingFunction 람다 함수를 실행한 결과) 값을 저장한다
+            node = node.childNode.computeIfAbsent(str.charAt(i), key -> new Node());
+        }
+    }
+
+    static boolean search(Node node, String str) {
+        for (int i = 0; i < str.length(); i++) {
+            node = node.childNode.getOrDefault(str.charAt(i), null);
+
+            if (node == null) return false;
+        }
+        return true;
+    }
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+
+        Node node = new Node();
+        for (int i = 0; i < N; i++) {
+            insert(node, br.readLine());
+        }
+
+        int ans = 0;
+        for (int i = 0; i < M; i++) {
+            if (search(node, br.readLine())) ans++;
+        }
+        System.out.println(ans);
+    }
+}
