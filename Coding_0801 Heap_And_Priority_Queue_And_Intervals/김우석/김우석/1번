@@ -1,0 +1,43 @@
+https://leetcode.com/problems/relative-ranks/
+
+//시간복잡도 : O(N), N은 배열 score의 길이
+//아이디어 : 점수를 키값으로, 등수를 value로 갖는 TreeMap을 만들고 등수에 따라 알맞는 값을 출력한다.
+//자료구조 : 우선순위 큐
+
+class Solution {
+    public String[] findRelativeRanks(int[] score) {
+
+            String[] answer = new String[score.length];
+            //점수를 key값으로 내림차순 정렬하는 TreeMap 생성
+            TreeMap<Integer, String> map = new TreeMap<>(Collections.reverseOrder());
+            int index = 1;
+
+            //먼저 score배열의 값들을 키로 하여 map에 넣고 value는 임시로 넣어둔다.
+            for(int i = 0; i < score.length; i++){
+                map.put(score[i], "temp");
+            }
+
+            //키 값 기준으로 정렬이 되어 있으므로, keySet을 돌면서 순위를 value에 넣어준다.
+            for(int num : map.keySet()){
+                map.put(num, String.valueOf(index));
+                index++;
+            }
+
+            //score배열을 돌면서 각 값을 키로 갖는 value를 찾아서 등수에 따라 String배열에 저장한다.
+            for(int i = 0; i < score.length; i++){
+                if(map.get(score[i]).equals("1")){
+                    answer[i] = "Gold Medal";                    
+                }
+                else if(map.get(score[i]).equals("2")){
+                    answer[i] = "Silver Medal";
+                }
+                else if(map.get(score[i]).equals("3")){
+                    answer[i] = "Bronze Medal";
+                }
+                else answer[i] = map.get(score[i]);
+            }
+
+            return answer;
+        
+    }
+}
