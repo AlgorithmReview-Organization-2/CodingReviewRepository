@@ -1,0 +1,26 @@
+https://leetcode.com/problems/take-gifts-from-the-richest-pile/
+
+//시간복잡도 : O(NlogN), N은 주어진 배열의 길이
+//아이디어 : 우선순위 큐의 정렬기준을 내림차순으로 하고, 주어진 배열의 값들을 넣어준다. 주어진 횟수 k만큼 가장 큰 값을 꺼내서 루트값을 계산해준 뒤 다시 큐에 넣어준다. 마지막에 큐에 있는 모든 값들의 합을 구한다.
+//자료구조 : 우선순위 큐
+
+class Solution {
+    public long pickGifts(int[] gifts, int k) {
+        long answer = 0;
+        PriorityQueue<Long> que = new PriorityQueue<>(Comparator.reverseOrder());
+
+        for(int i = 0; i < gifts.length; i++) {
+            que.add((long) gifts[i]);
+        }
+
+        for(int i  = 0; i < k; i++){
+            que.add((long)Math.sqrt(que.poll()));
+        }
+
+        while(!que.isEmpty()){
+            answer += que.poll();
+        }
+
+        return answer;
+    }
+}
