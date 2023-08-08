@@ -1,0 +1,17 @@
+https://leetcode.com/problems/make-array-zero-by-subtracting-equal-amounts/
+
+//시간복잡도 : O(N), N은 nums의 길이
+//아이디어 : 결국엔 0이 아닌 숫자들의 개수를 찾으면 되는 문제
+//자료구조 : Set
+
+class Solution {
+    public int minimumOperations(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+
+        for(int i : nums){
+            if(i != 0) set.add(i);
+        }
+
+        return set.size();
+    }
+}
