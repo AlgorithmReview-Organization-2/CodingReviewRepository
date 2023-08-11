@@ -1,0 +1,19 @@
+https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
+
+//시간복잡도 : O(N^2), N은 nums의 길이
+//아이디어 : nums 배열의 두 원소의 곱을 계속 구하면서 answer에는 제일 큰 값만 저장한다.
+//자료구조 : 배열
+
+class Solution {
+    public int maxProduct(int[] nums) {
+        int answer = Integer.MIN_VALUE;
+
+        for(int i = 0; i < nums.length - 1; i++){
+            for(int j = i + 1; j < nums.length; j++){
+                answer = Math.max((nums[i] - 1)*(nums[j] - 1), answer);
+            }
+        }
+
+        return answer;
+    }
+}

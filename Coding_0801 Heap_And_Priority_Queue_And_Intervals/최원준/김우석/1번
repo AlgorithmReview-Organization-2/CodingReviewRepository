@@ -1,0 +1,38 @@
+https://leetcode.com/problems/last-stone-weight/
+
+//시간복잡도 : O(NlogN), N은 배열의 길이
+//아이디어 : 배열의 값들을 먼저 큐에 넣고, 큰 값부터 차례로 꺼내면서 돌끼리 부딪힌 값을 추가해 나간다.
+//자료구조 : 우선순위 큐
+
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        int answer = 0;
+            PriorityQueue<Integer> weights = new PriorityQueue<>(Collections.reverseOrder());
+            int a = 0;
+            int b = 0;
+
+            if(stones == null) return 0;
+            if(stones.length == 1) return stones[0];
+
+            for(int i = 0; i < stones.length; i++){
+                weights.add(stones[i]);
+            }
+
+            while(true){
+                if(weights.peek() == null) return 0;
+                a = weights.poll(); //제일 큰 돌 꺼내서 저장
+                if(weights.peek() == null) {
+                    return a;
+                }
+                else{
+                    b = weights.peek(); //다음꺼 있는지 보고 저장
+                }
+
+                if(a == b) weights.poll(); //둘의 무게가 같다면 b를 빼고 끝
+                if(a != b) { //둘의 무게가 다르다면
+                    weights.poll(); //b를 꺼내고
+                    weights.add(Math.abs(a-b)); //두 돌을 서로 부딪힌 결과를 저장
+                }
+            }   
+    }
+}
