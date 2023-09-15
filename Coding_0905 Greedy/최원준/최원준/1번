@@ -1,0 +1,21 @@
+# https://leetcode.com/problems/maximum-subarray/description/
+
+'''
+1. 아이디어 :
+    0보다 작아질때 다시 0으로 만들면서 탐색한다
+2. 시간복잡도 :
+    O(n)
+3. 자료구조 :
+    -
+'''
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        cmax = -float('inf')
+        curr = 0
+        for n in nums:
+            curr+=n
+            cmax = max(cmax, curr)
+            if curr<0:
+                curr=0
+        return cmax
