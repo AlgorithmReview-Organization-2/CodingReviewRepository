@@ -1,0 +1,21 @@
+# https://leetcode.com/problems/jump-game/
+
+'''
+1. 아이디어 :
+    뒤에서부터 greedy로 푼다.
+    Goal을 점점 줄이고, 마지막 goal이 0이면 True
+2. 시간복잡도 :
+    O(n)
+3. 자료구조 :
+    -
+'''
+
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        goal = len(nums)-1
+
+        for i in range(len(nums)-1,-1,-1):
+            if i+nums[i] >= goal:
+                goal = i
+
+        return True if goal ==0 else False
