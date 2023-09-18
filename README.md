@@ -1,10 +1,38 @@
-# AlgorithmCodes 3
+# AlgorithmCodes 4 (advanced)
 Repository for submitting and reviewing peer answers for coding questions.
 
 <br>
 <b> Algorithm Categories to cover </b>
 
+- 09/12 Array_And_Hashing_And_Stack
+- 09/19 Two_Pointers_And_Sliding_Window
+- 09/26 Binary_Search_And_Linked_List
+- 10/03 Tree_And_Tries
+- 10/10 Heap_And_Priority_Queue_And_Intervals
+- 10/17 Backtracking
+- 10/24 Graph
+- 10/31 1D_DP
+- 11/07 2D_DP
+- 11/14 Greedy
+--------
 
+# AlgorithmCodes 3 (basic)
+Repository for submitting and reviewing peer answers for coding questions.
+
+<br>
+<b> Algorithm Categories to cover </b>
+
+- 07/04 Array_And_Hashing_And_Stack
+- 07/11 Two_Pointers_And_Sliding_Window
+- 07/18 Binary_Search_And_Linked_List
+- 07/25 Tree_And_Tries
+- 08/01 Heap_And_Priority_Queue_And_Intervals
+- 08/08 Backtracking
+- 08/15 Graph
+- 08/22 1D_DP
+- 08/29 2D_DP
+- 09/05 Greedy
+--------
 
 # AlgorithmCodes 2 
 Repository for submitting and reviewing peer answers for coding questions.
