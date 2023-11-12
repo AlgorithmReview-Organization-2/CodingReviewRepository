@@ -8,12 +8,12 @@ Repository for submitting and reviewing peer answers for coding questions.
 - 09/29 Two_Pointers_And_Sliding_Window
 - 10/06 Binary_Search_And_Linked_List
 - 11/03 Tree_And_Tries
-- 11/10 Heap_And_Priority_Queue_And_Intervals
-- 11/17 Backtracking
-- 11/24 Graph
-- 12/01 1D_DP
-- 12/08 2D_DP
-- 12/15 Greedy
+- 11/17 Heap_And_Priority_Queue_And_Intervals
+- 11/24 Backtracking
+- 12/01 Graph
+- 12/08 1D_DP
+- 12/15 2D_DP
+- 12/22 Greedy
 --------
 
 # AlgorithmCodes 3 (basic)
