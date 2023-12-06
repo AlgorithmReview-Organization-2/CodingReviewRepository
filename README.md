@@ -10,10 +10,10 @@ Repository for submitting and reviewing peer answers for coding questions.
 - 11/03 Tree_And_Tries
 - 11/17 Heap_And_Priority_Queue_And_Intervals
 - 11/24 Backtracking
-- 12/01 Graph
-- 12/08 1D_DP
-- 12/15 2D_DP
-- 12/22 Greedy
+- 12/08 Graph
+- 12/15 1D_DP
+- 12/22 2D_DP
+- 12/29 Greedy
 --------
 
 # AlgorithmCodes 3 (basic)
