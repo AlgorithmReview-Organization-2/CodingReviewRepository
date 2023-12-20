@@ -4,6 +4,8 @@
 - 이슈 등록은 문제 url을 올리고, 라벨을 question으로 설정.
 - main에서 branch를 하나 만든 후(branch name은 본인이름) Coding_YYMMDD 주제/출제자/푸는사람/x번문제.확장자(.java 또는 .py). 라벨은 풀었던 문제의 출제자들을 등록.
 - 다음 주제에 대한 문제들을 올린다.
+- pull request에 대한 리뷰는 세션 참여자들에게 요청하고, 서로 아주 간단한 LGTM / GOOD 정도 리뷰를 해줍니다. (질문/토론은 가능하나, 대답은 필수가 아니라는 점)
+- 리뷰가 달린 후 **본인**이 merge합니다.
 
 ### 예:
 - 12/27 Array_And_Hashing_And_Stack
