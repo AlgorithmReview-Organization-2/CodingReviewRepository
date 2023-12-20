@@ -4,16 +4,16 @@ Repository for submitting and reviewing peer answers for coding questions.
 <br>
 <b> Algorithm Categories to cover </b>
 
-- 01/03 Array_And_Hashing_And_Stack
-- 01/10 Two_Pointers_And_Sliding_Window
-- 01/17 Binary_Search_And_Linked_List
-- 01/24 Tree_And_Tries
-- 01/31 Heap_And_Priority_Queue_And_Intervals
-- 02/07 Backtracking
-- 02/14 Graph
-- 02/21 1D_DP
-- 02/28 2D_DP
-- 03/06 Greedy
+- 12/27 Array_And_Hashing_And_Stack
+- 01/03 Two_Pointers_And_Sliding_Window
+- 01/10 Binary_Search_And_Linked_List
+- 01/17 Tree_And_Tries
+- 01/24 Heap_And_Priority_Queue_And_Intervals
+- 01/31 Backtracking
+- 02/07 Graph
+- 02/14 1D_DP
+- 02/21 2D_DP
+- 02/28 Greedy
 --------
 
 # AlgorithmCodes 4 (advanced)
