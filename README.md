@@ -1,3 +1,22 @@
+# 규칙
+- 날짜 xx/xx 가 되기전에 모두 해당 주제에 대한 문제들을 이슈에 등록을 완료한다.
+- 날짜 xx/xx 부터 한주동안 해당 주제에 대한 문제를 푼다.
+- 이슈 등록은 문제 url을 올리고, 라벨을 question으로 설정.
+- main에서 branch를 하나 만든 후(branch name은 본인이름) Coding_YYMMDD 주제/출제자/푸는사람/x번문제.확장자(.java 또는 .py). 라벨은 풀었던 문제의 출제자들을 등록.
+- 다음 주제에 대한 문제들을 올린다.
+
+### 예:
+- 12/27 Array_And_Hashing_And_Stack
+- 01/03 Two_Pointers_And_Sliding_Window 일때,
+- **a.** 12/27일전까지 Array / Hash / Stack에 대한 문제를 이슈에 등록한다.
+- **b.** 12/27 ~ 01/03까지 이슈에 등록된 문제를 푼다. 
+- **c.** 본인(홍길동)이 김철수가 등록한 1, 2번 문제, 김영희가 등록한 4번 문제를 풀었을때, branch를 새로 만들어서
+- **d-1.** Coding_231227 Coding_Array_And_Hashing_And_Stack/김철수/홍길동/1번.java
+- **d-2.** Coding_231227 Coding_Array_And_Hashing_And_Stack/김철수/홍길동/2번.java
+- **d-3.** Coding_231227 Coding_Array_And_Hashing_And_Stack/김영희/홍길동/4번.java 를 등록한다.
+- **e.** 01/03전까지 pull request를 등록한다.
+- **f.** 반복한다. 01/03전까지 투포인터, 슬라이딩 윈도우에 대한 문제를 이슈에 등록한다.
+
 # AlgorithmCodes 5 (advanced)
 Repository for submitting and reviewing peer answers for coding questions.
 
