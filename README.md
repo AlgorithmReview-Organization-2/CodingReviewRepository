@@ -15,7 +15,7 @@
 - **c.** 본인(홍길동)이 김철수가 등록한 1, 2번 문제, 김영희가 등록한 4번 문제를 풀었을때, branch를 새로 만들어서
 - **d-1.** Coding_231227 Coding_Array_And_Hashing_And_Stack/김철수/홍길동/1번.java
 - **d-2.** Coding_231227 Coding_Array_And_Hashing_And_Stack/김철수/홍길동/2번.java
-- **d-3.** Coding_231227 Coding_Array_And_Hashing_And_Stack/김영희/홍길동/4번.java 를 등록한다. (해가 넘어가서, 기존 MMDD이 아닌 YYMMDD로 변경합니다.)
+- **d-3.** Coding_231227 Coding_Array_And_Hashing_And_Stack/김영희/홍길동/4번.java 를 등록한다. (해가 넘어가서, 기존 MMDD가 아닌 YYMMDD로 변경합니다.)
 - **e.** 01/03전까지 pull request를 등록한다.
 - **f.** 반복한다. 01/03전까지 투포인터, 슬라이딩 윈도우에 대한 문제를 이슈에 등록하고, 참여자들의 pull request에 간단한 리뷰를 등록한다.(선택)
 
