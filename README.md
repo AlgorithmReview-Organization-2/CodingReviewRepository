@@ -26,7 +26,7 @@ Repository for submitting and reviewing peer answers for coding questions.
 - 12/27 Array_And_Hashing_And_Stack
 - 01/03 Two_Pointers_And_Sliding_Window
 - 01/10 Binary_Search_And_Linked_List
-- 01/17 Tree_And_Tries
+- 01/17 Tree
 - 01/24 Heap_And_Priority_Queue_And_Intervals
 - 01/31 Backtracking
 - 02/07 Graph
