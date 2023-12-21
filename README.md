@@ -19,7 +19,7 @@
 - **e.** 01/03전까지 pull request를 등록한다.
 - **f.** 반복한다. 01/03전까지 투포인터, 슬라이딩 윈도우에 대한 문제를 이슈에 등록하고, 참여자들의 pull request에 간단한 리뷰를 등록한다.(선택)
 
-# AlgorithmCodes 5 (advanced)
+# AlgorithmCodes 5 (advanced, 2 questions each)
 Repository for submitting and reviewing peer answers for coding questions.
 
 <br>
