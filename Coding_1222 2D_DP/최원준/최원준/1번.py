@@ -1,33 +1,23 @@
-# https://leetcode.com/problems/edit-distance/
-
-'''
-1. 아이디어 :
-    delete, insert, replace 세 가지 연산을 이용한다.
-2. 시간복잡도 :
-    O(n*m)
-3. 자료구조 :
-    해시맵
-'''
-
-
 class Solution:
-    def minDistance(self, word1: str, word2: str) -> int:
+    def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         dp = {}
 
-        def dfs(i, j):
-            if i == len(word1):
-                return len(word2) - j
-            if j == len(word2):
-                return len(word1) - i
+        dir =[[1,0],[-1,0],[0,1],[0,-1]]
 
-            if (i, j) in dp:
-                return dp[(i, j)]
+        def dfs(r, c, prevVal):
+            if r<0 or r==len(matrix) or c<0 or c == len(matrix[0]) or matrix[r][c]<=prevVal:
+                return 0
+            
+            if (r,c) in dp:
+                return dp[(r,c)]
 
-            if word1[i] == word2[j]:
-                dp[(i, j)] = dfs(i + 1, j + 1)
-            else:
-                dp[(i, j)] = 1 + min(dfs(i, j + 1), dfs(i + 1, j), dfs(i + 1, j + 1))
+            res = 1
+            for r2, c2 in dir:
+                res = max(res, 1+dfs(r+r2, c+c2, matrix[r][c]))
+            dp[(r,c)] = res
+            return res
 
-            return dp[(i, j)]
-
-        return dfs(0, 0)
+        for r in range(len(matrix)):
+            for c in range(len(matrix[0])):
+                dfs(r,c,-1)
+        return max(dp.values())
