@@ -1,9 +1,9 @@
-n = int(input())  # 수열의 원소 개수
+import sys
+
+n = int(sys.stdin.readline().rstrip())  # 입력을 빠르게 받음
+
 ans = [0] * n  # 답을 저장할 리스트를 0으로 초기화
-A = list(map(int, input().split()))  # 숫자의 수열
-
-
-
+A = list(map(int, sys.stdin.readline().split()))
 myStack = []  # 인덱스를 추적하기 위한 스택
 for i in range(n):
     # 스택이 비어있지 않고 현재 원소가 스택의 최상위 인덱스가 가리키는 원소보다 크면
