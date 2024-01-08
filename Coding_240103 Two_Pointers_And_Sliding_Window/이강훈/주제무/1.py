@@ -1,7 +1,14 @@
 '''
 https://www.acmicpc.net/problem/15961
 
-주제
+주제: sliding window
+시간복잡도: N
+
+구현
+circular 초밥을 저장하고 초기 초밥 고유 개수를 구한다.
+투포인터로 끝과 끝을 제거, 추가한다.
+cur_count를 둠으로 반복문이 2중화되지 않도록 한다.
+쿠폰은 cur_count에 포함되지 않도록 구현한다.
 '''
 from collections import defaultdict
 import sys
