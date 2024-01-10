@@ -2,7 +2,7 @@
 https://www.acmicpc.net/problem/2428
 
 주제: 투 포인터
-시간복잡도: N
+시간복잡도: NlogN
 
 구현
 오름차순 정렬 후에 작은 원소부터 초점을 맞추고
