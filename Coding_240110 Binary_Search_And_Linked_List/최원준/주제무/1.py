@@ -1,7 +1,7 @@
 '''
 https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/
 
-주제:
+주제: 이분탐색
 시간복잡도: logN
 
 구현
