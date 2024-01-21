@@ -1,7 +1,7 @@
 '''
 https://www.acmicpc.net/problem/20924
 
-
+주제: 트리
 '''
 import sys
 from collections import defaultdict
