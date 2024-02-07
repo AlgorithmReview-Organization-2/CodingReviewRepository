@@ -1,30 +1,42 @@
-import heapq# 우선순위 큐 사용
+'''
+https://www.acmicpc.net/problem/12764
 
-n = int(input())# 과제의 개수
+주제: 힙
 
-hq = []# 과제 정보
-max_day = 0# 과제 마감일
-for i in range(n):# 과제 정보 입력
-    d, w = map(int, input().split())# 과제 마감일, 과제 점수
-    heapq.heappush(hq, (-w, d))# 과제 점수, 과제 마감일
-    if max_day < d: # 과제 마감일 최댓값
-        max_day = d# 과제 마감일 최댓값
+구현
+- 시작 시간과 종료 시간이 겹치는 경우는 없다.
+'''
+import heapq
+import sys
 
-assigned = [False] * (max_day + 1)# 과제를 할당했는지 여부
 
-score = 0# 점수
-while hq:# 과제가 남아있다면
-    # 가장 스코어 높은 순으로 가져와서
-    w, d = heapq.heappop(hq)# 과제 점수, 과제 마감일
-    w = -w# 과제 점수
+input = lambda: sys.stdin.readline().rstrip()
+N = int(input())
+time_table = []
+for _ in range(N):
+    P, Q = map(int, input().split())
+    time_table.extend([((P, 0), "start"), ((Q, P), "end")])
+time_table.sort()
 
-    # d일부터 1일 까지 거꾸로 돌면서 비어있는 날 중에 최대한 늦게 배정
-    for i in range(d, 0, -1):# 과제 마감일부터 1일까지
-        if assigned[i]:# 과제를 할당했다면
-            continue# 넘어감
+use_count = [0] * 100_000
+computer_available = list(range(100_000))
+heapq.heapify(computer_available)
+uses = {}
+for time, kind in time_table:
+    if kind == "start":
+        cur = heapq.heappop(computer_available)
+        use_count[cur] += 1
+        uses[time[0]] = cur
+    elif kind == "end":
+        end, start = time
+        heapq.heappush(computer_available, uses[start])
+        uses[start] = None
 
-        assigned[i] = True# 과제를 할당했다고 표시
-        score += w# 점수 추가
-        break# 끝냄
+result = []
+for cnt in use_count:
+    if not cnt:
+        break
 
-print(score)# 점수 출력
+    result.append(cnt)
+print(len(result))
+print(*result)
